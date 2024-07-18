@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Page</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<style>
+		body{
+			background-color: darkgrey;
+			height: 100%;
+		}
+
+		.gradient-custom-2 {
+			background:linear-gradient(to top left, #ff6600 0%, #cc0099 100%);
+		}
+
+		@media (min-width: 768px) {
+			.gradient-form {
+				height: 100vh !important;
+			}
+		}
+
+		@media (min-width: 769px) {
+			.gradient-custom-2 {
+				border-top-right-radius: .3rem;
+				border-bottom-right-radius: .3rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg "style="background:linear-gradient(to right, #00ffcc 0%, #003399 100%);">
+			<div class="container-fluid">
+				<img th:src="@{/images/technologies.png}" alt="Your Image" style="height: 70px;" />
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon bg-light"></span>
+				</button>
+				<div class="collapse navbar-collapse ml-3" id="navbarNav">
+
+					<a class="nav-link active ml-5 text text-light" aria-current="page" href="/"
+						style="margin-left: 50px;"><b>Home</b></a>
+					<a class="nav-link text text-light" href="#" style="margin-left: 50px;"><b>Services</b></a>
+					<a class="nav-link text text-light" href="#" style="margin-left: 50px;"><b>Courses</b></a>
+					<a class="nav-link" style="margin-left: 50px; color: white;"><b>About</b></a>
+					<a class="nav-link btn btn-danger" href="/" style="margin-left: 50px; color: white;"><b>Login</b></a>
+
+				</div>
+			</div>
+		</nav>
+	</div>
+	<section class="h-100 gradient-form">
+		<div class="container py-2 h-50">
+			<div class="row d-flex justify-content-center align-items-center h-50">
+				<div class="col-xl-10">
+					<div class="card rounded-3 text-black">
+						<div class="row g-0">
+							<div class="col-lg-6">
+								<div class="card-body p-md-1 mx-md-1">
+
+									<div class="text-center">
+										<img th:src="@{/images/technologies.png}" style="width: 150px;" alt="logo">
+										<h4 class="mt-1 mb-1 pb-1">We are The Grow Up Team</h4>
+									</div>
+									<form th:action="@{/register}" th:object="${counselor}" method="post">
+										<p>Please Register your account</p>
+
+										<div class="form-outline mb-1">
+											<h3 th:text="${success}" class="text text-success"></h3>
+											<input type="text" id="form2Example11" class="form-control"
+												placeholder="Enter Your Name" th:field="*{name}" required />
+											<label class="form-label" for="form2Example11">Name</label>
+										</div>
+
+										<div class="form-outline mb-1">
+											<input type="email" id="form2Example22" class="form-control"
+												th:field="*{email}" placeholder="Enter your email"  required/>
+											<label class="form-label" for="form2Example22">Email</label>
+										</div>
+										<div class="form-outline mb-1">
+											<input type="password" id="form2Example22" class="form-control"
+												th:field="*{password}" placeholder="Enater your password" required />
+											<label class="form-label" for="form2Example22">Password</label>
+										</div>
+										<div class="form-outline mb-1">
+											<input type="number" id="form2Example22" class="form-control"
+												th:field="*{phno}" placeholder="Enater your phno" required />
+											<label class="form-label" for="form2Example22">phno</label>
+										</div>
+										<div class="text-center pt-1 mb-1 pb-1">
+											<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1"
+												type="submit">Register
+											</button>
+										</div>
+										<div class="d-flex align-items-center justify-content-center pb-1">
+											<a href="/" class="btn btn-outline-danger" >Login</a>
+										</div>
+									</form>
+
+								</div>
+							</div>
+							<div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+								<div class="text-white px-3 py-2 p-md-3 mx-md-2">
+									<img th:src="@{/images/technologies.png}" style="width: 100%;" alt="logo">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
+<!--<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<style>
+		input {
+			width: 300px;
+			height: 50px;
+		}
+
+		label {
+			font-size: 25px;
+			font-family: Arial, Helvetica, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		}
+
+		table {
+			border-collapse: separate;
+			border-spacing: 0px 30px;
+		}
+
+		#button {
+			width: 80%;
+			margin-left: 80px;
+		}
+
+		#check {
+			width: 100px;
+			height: 15px;
+		}
+
+		h1 {
+			text-align: center;
+			color: black;
+		}
+
+		body {
+			background-image: url(/images/background.png);
+		}
+	</style>
+
+</head>
+
+<body>
+
+
+
+	<div class="container">
+		<nav class="navbar navbar-expand-lg bg-dark">
+			<div class="container-fluid">
+				<img th:src="@{/images/Logo1.png}" alt="Your Image" style="height: 70px;" />
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon bg-light"></span>
+				</button>
+				<div class="collapse navbar-collapse ml-3" id="navbarNav">
+
+					<a class="nav-link active ml-5 text text-light" aria-current="page" href="/"
+						style="margin-left: 50px;"><b>Home</b></a>
+					<a class="nav-link text text-light" href="#" style="margin-left: 50px;"><b>Services</b></a>
+					<a class="nav-link text text-light" href="#" style="margin-left: 50px;"><b>Courses</b></a>
+					<a class="nav-link" style="margin-left: 50px; color: white;"><b>About</b></a>
+					<a href="/" class="btn btn-danger" style="margin-left: 400px;">Login</a>
+				</div>
+			</div>
+		</nav>
+		<div id="border" class="mt-5">
+		</div>
+		<div class="card-group shadow p-1 mb-5 bg-dark rounded" style="display:inline-block; box-shadow: 10rm skyblue;">
+			<div class="card bg-light">
+				<div class="card-body text-center">
+					<h1>Registraion Here..!</h1>
+					<hr>
+					<h3 th:text="${success}" class="text text-success"></h3>
+					<form th:action="@{/register}" th:object="${counselor}" method="post">
+						<table>
+							<tr>
+								<td><label>Name:</label></td>
+								<td>
+									<input type="text" placeholder="enter your name" th:field="*{name}" required />
+								</td>
+							</tr>
+							<tr>
+								<td><label>Email:</label></td>
+								<td>
+									<input type="text" placeholder="enter your email" th:field="*{email}" required />
+								</td>
+							</tr>
+							<tr>
+								<td><label>Password</label></td>
+								<td>
+									<input type="text" placeholder="enter your password" th:field="*{password}"
+										required />
+								</td>
+							</tr>
+							<tr>
+								<td><label>phno:</label></td>
+								<td>
+									<input type="number" placeholder="enter your phno" th:field="*{phno}" required />
+								</td>
+							</tr>
+
+
+
+							<tr>
+								<td colspan="6">
+									<input type="submit" class="btn btn-info" id="button" value="Register" />
+								</td>
+							</tr>
+						</table>
+				</div>
+				</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>-->

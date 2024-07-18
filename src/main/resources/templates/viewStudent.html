@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="/webjars/jquery/3.6.4/jquery.min.js"></script>
+
+	<style>
+		body {
+			background-color:aliceblue;
+			height: 100%;
+		}
+
+		.gradient-custom-2{
+			background: linear-gradient(to top left, #ff6600 0%, #cc0099 100%);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg " style="background:linear-gradient(to right, #00ffcc 0%, #003399 100%);">
+			<div class="container-fluid">
+
+				<img th:src="@{/images/technologies.png}" alt="Your Image" style="height: 50px;" />
+				<a href="dash" class="nav-link text text-light" style="margin-left: 30px;"><b>DashBoard</b></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon bg-light"></span>
+				</button>
+				<div class="collapse navbar-collapse ml-3" id="navbarNav">
+
+					<a class="nav-link active ml-5 text text-light" aria-current="page" href="student"
+						style="margin-left: 50px;"><b>AddStudent</b></a>
+					<a class="nav-link text text-light" href="view" style="margin-left: 50px;"><b>ViewStudents</b></a>
+					<a href="/" class="btn btn-info" style="margin-left: 400px;">Logout</a>
+
+				</div>
+			</div>
+		</nav>
+		<br>
+		<form th:action="@{/filterData}" th:object="${filter}" method="post">
+			<table>
+				<tr>
+					<td class="text-dark h4"><b>Course:</b></td>
+					<td>
+						<select th:field="*{course}" id="course" class="form-select">
+							<option value="">-select-</option>
+							<option value="java" th:field="*{course}">Java</option>
+							<option value="python" th:field="*{course}">Python</option>
+							<option value="AWS" th:field="*{course}">AWS</option>
+							<option value="Devops" th:field="*{course}">Devops</option>
+							<option value="MicroServices" th:field="*{course}">Microserivices</option>
+						</select>
+					</td>
+					<td class="text-dark h4"><b>Mode:</b></td>
+					<td>
+						<select th:field="*{mode}" id="mode" class="form-select">
+							<option value="">-select-</option>
+							<option value="Online" th:field="*{mode}">Online</option>
+							<option value="ClassRoom" th:field="*{mode}">ClassRoom</option>
+						</select>
+					</td>
+					<td class="text-dark h4"><b>Status:</b></td>
+					<td>
+						<select th:field="*{status}" id="status" class="form-select">
+							<option value="">-select-</option>
+							<option value="New" th:field="*{status}">New</option>
+							<option value="Enrolled" th:field="*{status}">Enrolled</option>
+							<option value="Lost" th:field="*{status}">Lost</option>
+
+						</select>
+					</td>
+				</tr>
+			</table>
+
+		</form>
+		<div id="filterTable"></div>
+		<table class="table table-striped mt-1" id="enqTable">
+			<tr>
+				<th>S.No</th>
+				<th>Name</th>
+				<th>Course</th>
+				<th>Contact</th>
+				<th>EnquiryDate</th>
+				<th>Mode</th>
+				<th>Status</th>
+			</tr>
+			<tr th:each="student:${StudentList}">
+				<td th:text="${student.sid}"></td>
+				<td th:text="${student.name}"></td>
+				<td th:text="${student.course}"></td>
+				<td th:text="${student.contact}"></td>
+				<td th:text="${student.enquiryDate}"></td>
+				<td th:text="${student.mode}"></td>
+				<td th:text="${student.status}"></td>
+			</tr>
+		</table>
+
+
+
+	</div>
+	<script>
+
+		$(document).ready(function () {
+			$('.form-select').on("change", function () {
+				$.ajax({
+					type: 'POST',
+					url: '/filterData',
+					data: {
+						course: $('#course').val(),
+						mode: $('#mode').val(),
+						status: $('#status').val(),
+					},
+					success: function (result) {
+						$("#enqTable").hide();
+						$("#filterTable").html(result);
+					}
+				});
+			});
+		});
+	</script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

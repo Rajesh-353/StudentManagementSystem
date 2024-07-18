@@ -1,0 +1,23 @@
+server:
+  port: 9999
+spring:
+  datasource:
+    password: naveen@125
+    url: jdbc:mysql://localhost:3306/sbms
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    password: tfuy jcrr nevs kgdu
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: bnaveen2255@gmail.com
+
